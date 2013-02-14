@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
     <!-- DataBase Access-->
-    <script type="text/javascript" charset="utf-8" src="all_js_functions/cordova-2.2.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery-mobile/cordova-2.2.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="jquery-mobile/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     
@@ -25,7 +25,7 @@
     // Showing result from the table "user_inf"
     function querySuccess(tx, results) {
         var len = results.rows.length;
-		//alert(len);
+		alert(len);
 		if(len==1)
 		{   
 			var email_add  	    = results.rows.item(0).email_add;
