@@ -30,6 +30,7 @@
     // Cordova is ready
     // Creating a Database named Database
     function onDeviceReady() {
+		alert("onDeviceReady");
         var db = window.openDatabase("sow_db", "1.0", "safe on wheels", 200000);
         db.transaction(populateDB, errorCB, successCB);
     }
@@ -37,7 +38,7 @@
     // Populate the database 
     // Running some query
     function populateDB(tx) {
-		//alert("populateDB");
+		alert("populateDB");
         //tx.executeSql('DROP TABLE IF EXISTS user_inf');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_inf (email_add, password, phone_no, user_salutation, user_first_name, user_last_name, login_status)');
 
@@ -55,6 +56,7 @@
 
     // Selecting Data from the database "user_inf"
     function queryDB(tx) {
+		alert("queryDB");
         tx.executeSql('SELECT * FROM user_inf', [], querySuccess, errorCB);
     }
 
