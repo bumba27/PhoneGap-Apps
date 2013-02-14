@@ -1,62 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="utf-8">
-    <title>jQuery Mobile Web App</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <script type="text/javascript" charset="utf-8" src="md5.js"></script>
     <!-- DataBase Access-->
-    <script type="text/javascript" charset="utf-8" src="jquery-mobile/cordova-2.2.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="all_js_functions/cordova-2.2.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery-mobile/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-    // Wait for Cordova to load
-    //
-	function saveData()
-	{
-	var email_add    = document.getElementById("email_add").value;
-	var password     = document.getElementById("password").value;
-	var phone_no     = document.getElementById("phone_no").value;
-	var salutation   = document.getElementById("salutation").value;
-	var first_name   = document.getElementById("first_name").value;
-	var last_name    = document.getElementById("last_name").value;
-	
-		if(email_add != "" && phone_no != "" && salutation != " " && first_name != "" && last_name != "" )
-		{
-			document.addEventListener("deviceready", onDeviceReady, false);
-		}
-		else
-		{
-			alert("Fill up all information !!");
-			$.mobile.hidePageLoadingMsg();
-		}
-	}
+    
+	document.addEventListener("deviceready", onDeviceReady, false);
     // Cordova is ready
     // Creating a Database named Database
     function onDeviceReady() {
-		//alert("onDeviceReady");
-        var db = window.openDatabase("sow_db", "1.0", "safe on wheels", 200000);
+        var db = window.openDatabase("erp2bi_db", "1.0", "Cordova Demo", 200000);
         db.transaction(populateDB, errorCB, successCB);
     }
 
-    // Populate the database 
-    // Running some query
-    function populateDB(tx) {
-		//alert("populateDB");
-        //tx.executeSql('DROP TABLE IF EXISTS user_inf');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS user_inf (email_add, password, phone_no, user_salutation, user_first_name, user_last_name, login_status)');
-
-        var email_add    = document.getElementById("email_add").value;
-        var password     = document.getElementById("password").value;
-        var phone_no     = document.getElementById("phone_no").value;
-        var salutation   = document.getElementById("salutation").value;
-        var first_name   = document.getElementById("first_name").value;
-        var last_name    = document.getElementById("last_name").value;
-        var status       = "1";
-
-		var url = 'INSERT INTO user_inf (email_add, password, phone_no, user_salutation, user_first_name, user_last_name, login_status) VALUES ("'+email_add+'", "'+password+'", "'+phone_no+'", "'+salutation+'", "'+first_name+'", "'+last_name+'", '+status+')';
-		tx.executeSql(url);
-    }
 
     // Selecting Data from the database "user_inf"
-    function queryDB(tx) {
-		//alert("queryDB");
+    function populateDB(tx) {
         tx.executeSql('SELECT * FROM user_inf', [], querySuccess, errorCB);
     }
 
@@ -66,11 +29,48 @@
 		//alert(len);
 		if(len==1)
 		{   
-			window.location = 'index.html';
+			var user_id  		  = results.rows.item(0).user_id;
+			var password         = results.rows.item(0).password;
+			var comp_id          = results.rows.item(0).comp_id;
+			var user_salutation  = results.rows.item(0).user_salutation;
+			var user_first_name  = results.rows.item(0).user_first_name;
+			var user_last_name   = results.rows.item(0).user_last_name;
+			
+/*			alert(user_id);
+			alert(password);
+			alert(comp_id);
+			alert(user_salutation);
+			alert(user_first_name);
+			alert(user_last_name);
+*/			
+			document.getElementById("user").value         = user_id;
+			//document.getElementById("password").value     = password;
+			document.getElementById("organization").value = comp_id;
+			$("#salutation").append("<option value='Me' selected='selected'>Me</option>");
+			//document.getElementById("salutation").value   = user_salutation;
+			//var val = document.getElementById("salutation"); 
+			//$("#salutation option[value='Mr.']").attr("selected", "selected");
+			//$('#salutation').val('Mr.');
+//			for ( var i = 0; i < val.options.length; i++ ) 
+//			{
+//			   if( val.options[i].text == user_salutation ) 
+//			   {	
+//					alert("Match");			   
+//					var salu = val.options[i].text;
+//					document.getElementById("last_name1").value   = salu;
+//					alert(i);
+//					val.selectedIndex = i;
+//					break;
+//			   }
+//	   		}			
+
+			document.getElementById("first_name").value   = user_first_name;
+			document.getElementById("last_name").value    = user_last_name;
+			
 		}
 		else
 		{
-			alert("More then one user !!");
+			//document.getElementById("button").innerHTML = "Update";
 		}
     }
 
@@ -85,6 +85,7 @@
         var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
         db.transaction(queryDB, errorCB);
     }
+
     // Cordova is ready
     //
     function onDeviceReady() {
@@ -94,6 +95,9 @@
 
     </script>
     <!-- END DataBase Access-->
+	<!-- update -->
+    <script type="text/javascript" charset="utf-8" src="update.js"></script>
+	<!-- END update -->
 
     <link rel="stylesheet" href="jquery-mobile/jquery.mobile.css">
     <link rel="stylesheet" href="jquery-mobile/jqm-docs.css">
@@ -123,9 +127,9 @@
         <h1>Settings</h1>
       </div>
       <div data-role="content">
-        <input type="text" name="email_add" id="email_add" value="" placeholder="Email Address" />
+        <input type="text" name="user" id="user" value="" placeholder="User" />
         <input type="password" name="password" id="password" value="" placeholder="Password" />
-        <input type="text" name="phone_no" id="phone_no" value="" placeholder="Phone Number" />
+        <input type="text" name="organization" id="organization" value="" placeholder="Organization" />
         <select name="salutation" id="salutation" data-native-menu="true">
           <option value=" ">Salutation</option>
           <option value="Mr.">Mr.</option>
@@ -136,8 +140,8 @@
         <input type="text" name="first_name" id="first_name" value="" placeholder="First Name" />
         <input type="text" name="last_name" id="last_name" value="" placeholder="Last Name" />
        </div>
-    	<a href="javascript: saveData()" style="text-decoration:none">
-          <button class="show-page-loading-msg ui-btn-hidden" ><span id="button">Save</span></button>
+    	<a href="javascript: update()" style="text-decoration:none">
+          <button class="show-page-loading-msg ui-btn-hidden" ><span id="button">Update</span></button>
         </a>
     </div>
 </body>
