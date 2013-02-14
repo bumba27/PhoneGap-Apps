@@ -29,7 +29,7 @@ function setting(){
 		{   
 			//alert("inside else if");
 			var login_status = results.rows.item(0).login_status;
-			//alert("login_status :  "+login_status);
+			alert("login_status :  "+login_status);
 
 			if(login_status == 0)
 			{    
