@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.crews.sow"
+    version   = "1.0.0">
+
+<name>Safe On Wheels</name>
+
+<description>
+Safe On Wheels
+</description>
+
+<author href="https://example.com" email="you@example.com">
+Anirban
+</author>
+
+</widget>
