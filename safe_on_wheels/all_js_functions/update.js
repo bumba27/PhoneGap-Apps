@@ -49,15 +49,15 @@ function update(){
 		// Showing result from the table "user_inf"
 		function querySuccess(tx, results) {
 			var len = results.rows.length;
-			//alert(len);
+			alert(len);
 			if(len==1)
 			{   
-				//alert(results.rows.item(0).email_add);
-				//alert(results.rows.item(0).password);
-				//alert(results.rows.item(0).user_first_name);
-				var email_add1  = results.rows.item(0).email_add;
-				var password1   = results.rows.item(0).password;
-				var comp_id1    = results.rows.item(0).comp_id;
+				alert(results.rows.item(0).email_add);
+				alert(results.rows.item(0).password);
+				alert(results.rows.item(0).user_first_name);
+				//var email_add1  = results.rows.item(0).email_add;
+//				var password1   = results.rows.item(0).password;
+//				var comp_id1    = results.rows.item(0).comp_id;
 				window.location = 'index.html';
 			}
 			else
