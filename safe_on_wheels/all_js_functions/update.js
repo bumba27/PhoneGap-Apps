@@ -1,4 +1,5 @@
 function update(){
+	alert("hi");
         var email_add    = document.getElementById("user").value;
         var password     = document.getElementById("password").value;
         var phone_no     = document.getElementById("phone_no").value;
