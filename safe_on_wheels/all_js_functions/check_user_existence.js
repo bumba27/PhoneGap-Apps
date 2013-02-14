@@ -18,7 +18,7 @@
     // Running some query
     function populateDB(tx) {
         //tx.executeSql('DROP TABLE IF EXISTS user_inf');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS user_inf (user_id, email_add, password, phone_no, user_salutation, user_first_name, user_last_name, login_status)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS user_inf (email_add, password, phone_no, user_salutation, user_first_name, user_last_name, login_status)');
     }
 
     // Selecting Data from the database "user_inf"

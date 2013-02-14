@@ -61,7 +61,7 @@
     // Showing result from the table "user_inf"
     function querySuccess(tx, results) {
         var len = results.rows.length;
-		//alert(len);
+		alert(len);
 		if(len==1)
 		{   
 			window.location = 'index.html';
@@ -80,8 +80,7 @@
     // Transaction success callback
     //
     function successCB() {
-        var db = window.openDatabase("sow_db", "1.0", "safe on wheels", 200000);
-        db.transaction(queryDB, errorCB);
+        alert("success !!");
     }
 
     </script>
