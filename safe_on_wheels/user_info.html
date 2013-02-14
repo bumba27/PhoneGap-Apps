@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>jQuery Mobile Web App</title>
+    <!-- DataBase Access-->
+    <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    // Wait for Cordova to load
+    //
+	function saveData()
+	{
+	var email_add    = document.getElementById("email_add").value;
+	var password     = document.getElementById("password").value;
+	var phone_no     = document.getElementById("phone_no").value;
+	var salutation   = document.getElementById("salutation").value;
+	var first_name   = document.getElementById("first_name").value;
+	var last_name    = document.getElementById("last_name").value;
+	
+		if(email_add != "" && phone_no != "" && salutation != " " && first_name != "" && last_name != "" )
+		{
+			document.addEventListener("deviceready", onDeviceReady, false);
+		}
+		else
+		{
+			alert("Fill up all information !!");
+			$.mobile.hidePageLoadingMsg();
+		}
+	}
+    // Cordova is ready
+    // Creating a Database named Database
+    function onDeviceReady() {
+        var db = window.openDatabase("sow_db", "1.0", "safe on wheels", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+    // Populate the database 
+    // Running some query
+    function populateDB(tx) {
+		//alert("populateDB");
+        //tx.executeSql('DROP TABLE IF EXISTS user_inf');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS user_inf (email_add, password, phone_no, user_salutation, user_first_name, user_last_name, login_status)');
+
+        var email_add    = document.getElementById("email_add").value;
+        var password     = document.getElementById("password").value;
+        var phone_no     = document.getElementById("phone_no").value;
+        var salutation   = document.getElementById("salutation").value;
+        var first_name   = document.getElementById("first_name").value;
+        var last_name    = document.getElementById("last_name").value;
+        var status       = "1";
+
+		var url = 'INSERT INTO user_inf (email_add, password, phone_no, user_salutation, user_first_name, user_last_name, login_status) VALUES ("'+email_add+'", "'+password+'", "'+phone_no+'", "'+salutation+'", "'+first_name+'", "'+last_name+'", '+status+')';
+		tx.executeSql(url);
+    }
+
+    // Selecting Data from the database "user_inf"
+    function queryDB(tx) {
+        tx.executeSql('SELECT * FROM user_inf', [], querySuccess, errorCB);
+    }
+
+    // Showing result from the table "user_inf"
+    function querySuccess(tx, results) {
+        var len = results.rows.length;
+		//alert(len);
+		if(len==1)
+		{   
+			window.location = 'index.html';
+		}
+		else
+		{
+			alert("More then one user !!");
+		}
+    }
+
+    // If error encountered show here
+    function errorCB(err) {
+        console.log("Error processing SQL: "+err.code);
+    }
+
+    // Transaction success callback
+    //
+    function successCB() {
+        var db = window.openDatabase("sow_db", "1.0", "safe on wheels", 200000);
+        db.transaction(queryDB, errorCB);
+    }
+
+    </script>
+    <!-- END DataBase Access-->
+
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.css">
+    <link rel="stylesheet" href="jquery-mobile/jqm-docs.css">
+    <script src="jquery-mobile/jquery.js"></script>
+    <script>
+        $(document).bind("mobileinit", function(){
+            $.mobile.loadingMessageTextVisible = true;
+        });
+        </script>
+    <script src="jquery-mobile/jquery.mobile.js"></script>
+    <script>
+            $(document).on("click", ".show-page-loading-msg", function() {
+                var $this = $( this ),
+                    theme = $this.jqmData("theme") || $.mobile.loadingMessageTheme,
+                    msgText = $this.jqmData("msgtext") || $.mobile.loadingMessage,
+                    textonly = !!$this.jqmData("textonly");
+                $.mobile.showPageLoadingMsg(theme, msgText, textonly);
+            })
+            .on("click", ".hide-page-loading-msg", function() {
+                $.mobile.hidePageLoadingMsg();
+            });
+	</script>
+    </head>
+    <body>
+    <div data-role="page" id="page" >
+      <div data-role="header" data-theme="a">
+        <h1>Settings</h1>
+      </div>
+      <div data-role="content">
+        <input type="text" name="email_add" id="email_add" value="" placeholder="Email Address" />
+        <input type="password" name="password" id="password" value="" placeholder="Password" />
+        <input type="text" name="phone_no" id="phone_no" value="" placeholder="Phone Number" />
+        <select name="salutation" id="salutation" data-native-menu="true">
+          <option value=" ">Salutation</option>
+          <option value="Mr.">Mr.</option>
+          <option value="Ms.">Ms.</option>
+          <option value="Dr.">Dr.</option>
+          <option value="Prof.">Prof.</option>
+        </select>
+        <input type="text" name="first_name" id="first_name" value="" placeholder="First Name" />
+        <input type="text" name="last_name" id="last_name" value="" placeholder="Last Name" />
+       </div>
+    	<a href="javascript: saveData()" style="text-decoration:none">
+          <button class="show-page-loading-msg ui-btn-hidden" ><span id="button">Save</span></button>
+        </a>
+    </div>
+</body>
+</html>
