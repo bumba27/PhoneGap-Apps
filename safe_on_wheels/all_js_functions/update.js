@@ -6,6 +6,8 @@ function update(){
         var salutation   = document.getElementById("salutation").value;
         var first_name   = document.getElementById("first_name").value;
         var last_name    = document.getElementById("last_name").value;
+		
+		alert(email_add+password+phone_no+salutation+first_name+last_name);
 	if(email_add != "" && phone_no != "" && salutation != " " && first_name != "" && last_name != "" )
 	{
 		// Wait for Cordova to load
@@ -29,7 +31,7 @@ function update(){
 			//alert(password);
 			if(password != "")
 			{
-				var update = "UPDATE user_inf SET email_add = '"+email_add+"',password = '"+MD5(password)+"',comp_id = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
+				var update = "UPDATE user_inf SET email_add = '"+email_add+"',password = '"+password+"',comp_id = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
 				tx.executeSql(update);   
 			}
 			else if(password == "")
