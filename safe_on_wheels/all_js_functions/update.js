@@ -1,6 +1,6 @@
 function update(){
 	alert("hi");
-        var email_add    = document.getElementById("user").value;
+        var email_add    = document.getElementById("email_add").value;
         var password     = document.getElementById("password").value;
         var phone_no     = document.getElementById("phone_no").value;
         var salutation   = document.getElementById("salutation").value;
