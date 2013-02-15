@@ -41,7 +41,7 @@ if(email_add == email_add1 && password == password1 && phone_no == phone_no1)
 		}		
 		else
 		{
-			window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_drive_app_from_server/main_menu.html';
+			window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_wheels_app_from_server/main_menu.html';
 		}
         db.transaction(queryDB, errorCB);
     }
