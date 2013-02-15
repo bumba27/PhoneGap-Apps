@@ -32,13 +32,13 @@ function update(){
 			if(password != "")
 			{
 				alert("no pass");
-				var update = "UPDATE user_inf SET email_add = '"+email_add+"',password = '"+password+"',comp_id = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
+				var update = "UPDATE user_inf SET email_add = '"+email_add+"',password = '"+password+"',phone_no = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
 				tx.executeSql(update);   
 			}
 			else if(password == "")
 			{
 				alert("pass");
-				var update = "UPDATE user_inf SET email_add = '"+email_add+"',comp_id = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
+				var update = "UPDATE user_inf SET email_add = '"+email_add+"',phone_no = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
 				tx.executeSql(update);   
 			}
 			}
