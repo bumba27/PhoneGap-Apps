@@ -1,5 +1,4 @@
 function update(){
-	alert("hi");
         var email_add    = document.getElementById("email_add").value;
         var password     = document.getElementById("password").value;
         var phone_no     = document.getElementById("phone_no").value;
@@ -7,7 +6,6 @@ function update(){
         var first_name   = document.getElementById("first_name").value;
         var last_name    = document.getElementById("last_name").value;
 		
-		alert(email_add+password+phone_no+salutation+first_name+last_name);
 	if(email_add != "" && phone_no != "" && salutation != " " && first_name != "" && last_name != "" )
 	{
 		// Wait for Cordova to load
@@ -24,39 +22,39 @@ function update(){
 	
 		// Selecting Data from the database "Person_data"
 		function populateDB(tx) {
-			alert("populateDB");
+			//alert("populateDB");
 			tx.executeSql('CREATE TABLE IF NOT EXISTS user_inf (email_add, password, phone_no, user_salutation, user_first_name, user_last_name, login_status)');
 	
 			var status       = "1";
 			//alert(password);
 			if(password != "")
 			{
-				alert("no pass");
+				//alert("no pass");
 				var update = "UPDATE user_inf SET email_add = '"+email_add+"',password = '"+password+"',phone_no = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
 				tx.executeSql(update);   
 			}
 			else if(password == "")
 			{
-				alert("pass");
+				//alert("pass");
 				var update = "UPDATE user_inf SET email_add = '"+email_add+"',phone_no = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
 				tx.executeSql(update);   
 			}
 			}
 	
 		function queryDB(tx) {
-			alert("queryDB");
+			//alert("queryDB");
 			tx.executeSql('SELECT * FROM user_inf', [], querySuccess, errorCB);
 		}
 	
 		// Showing result from the table "user_inf"
 		function querySuccess(tx, results) {
 			var len = results.rows.length;
-			alert(len);
+			//alert(len);
 			if(len==1)
 			{   
-				alert(results.rows.item(0).email_add);
-				alert(results.rows.item(0).password);
-				alert(results.rows.item(0).user_first_name);
+				//alert(results.rows.item(0).email_add);
+				//alert(results.rows.item(0).password);
+				//alert(results.rows.item(0).user_first_name);
 				//var email_add1  = results.rows.item(0).email_add;
 //				var password1   = results.rows.item(0).password;
 //				var comp_id1    = results.rows.item(0).comp_id;
