@@ -41,8 +41,7 @@ if(email_add == email_add1 && password == password1 && phone_no == phone_no1)
 		}		
 		else
 		{
-			//alert('http://121.247.130.230/erp2bi/company_db_init.php?user_name='+user1+'&passwd='+md5Pass+'&comp_id='+organization1);
-			window.location = 'http://121.247.130.230/erp2bi/company_db_init.php?user_name='+user1+'&passwd='+password1+'&comp_id='+organization1;
+			window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_drive_app_from_server/main_menu.html';
 		}
         db.transaction(queryDB, errorCB);
     }
