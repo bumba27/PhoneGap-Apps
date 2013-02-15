@@ -39,6 +39,27 @@ function goTo()
 		}
 	}
 }
+
+function checkButton(){
+	var loginLogout = document.getElementById("button");
+	//alert(loginLogout.innerHTML);
+	var val = loginLogout.innerHTML; 
+	if(val == "Sign In"){
+		if(state == 0)
+		{
+			window.location = 'signIn.html';
+		}
+		else
+		{
+			window.location = 'user_info.html';
+		}
+	}
+	else if(val == "Sign Out"){
+			//alert("Sign Out Clicked !!");
+			logout();
+ 	}
+}
+
 </script>
 
 </head> 
