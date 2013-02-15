@@ -25,17 +25,19 @@ function update(){
 		// Selecting Data from the database "Person_data"
 		function populateDB(tx) {
 			alert("populateDB");
-			tx.executeSql('CREATE TABLE IF NOT EXISTS user_inf (email_add, password, comp_id, user_salutation, user_first_name, user_last_name, login_status)');
+			tx.executeSql('CREATE TABLE IF NOT EXISTS user_inf (email_add, password, phone_no, user_salutation, user_first_name, user_last_name, login_status)');
 	
 			var status       = "1";
 			//alert(password);
 			if(password != "")
 			{
+				alert("no pass");
 				var update = "UPDATE user_inf SET email_add = '"+email_add+"',password = '"+password+"',comp_id = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
 				tx.executeSql(update);   
 			}
 			else if(password == "")
 			{
+				alert("pass");
 				var update = "UPDATE user_inf SET email_add = '"+email_add+"',comp_id = '"+phone_no+"',user_salutation = '"+salutation+"',user_first_name = '"+first_name+"',user_last_name = '"+last_name+"',login_status = "+status;
 				tx.executeSql(update);   
 			}
