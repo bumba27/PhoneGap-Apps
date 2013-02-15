@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <script type="text/javascript" charset="utf-8" src="all_js_functions/reset.js"></script>
+	<!--<script type="text/javascript" charset="utf-8" src="login_status_update.js"></script>-->
+	<script type="text/javascript" charset="utf-8" src="all_js_functions/login.js"></script>
+    <!-- DataBase Access-->
+    <script type="text/javascript" charset="utf-8" src="jquery-mobile/cordova-2.2.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+	var email_add;
+	var password;
+	var phone_no;
+	
+	var email_add1;
+	var password1;
+	var phone_no1;
+	
+    document.addEventListener("deviceready", onDeviceReady, false);
+    // Cordova is ready
+    // Creating a Database named Database
+    function onDeviceReady() {
+        var db = window.openDatabase("sow_db", "1.0", "safe on wheels", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+
+    // Selecting Data from the database "user_inf"
+    function populateDB(tx) {
+        tx.executeSql('SELECT * FROM user_inf', [], querySuccess, errorCB);
+    }
+
+    // Showing result from the table "user_inf"
+    function querySuccess(tx, results) {
+        var len = results.rows.length;
+		//alert(len);
+		if(len==1)
+		{   
+			email_add  	 = results.rows.item(0).email_add;
+			password      = results.rows.item(0).password;
+			phone_no      = results.rows.item(0).phone_no;
+			
+			document.getElementById("user").value         = email_add;
+			//document.getElementById("password").value   = password;
+			document.getElementById("organization").value = phone_no;
+			
+		}
+		else
+		{
+			alert(" Sorry No user !!");
+		}
+    }
+
+    // If error encountered show here
+    function errorCB(err) {
+        console.log("Error processing SQL: "+err.code);
+    }
+
+    // Transaction success callback
+    //
+    function successCB() {
+        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        db.transaction(queryDB, errorCB);
+    }
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+    </script>
+    <!-- END DataBase Access-->
+
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.css">
+    <link rel="stylesheet" href="jquery-mobile/jqm-docs.css">
+    <script src="jquery-mobile/jquery.js"></script>
+    <script>
+        $(document).bind("mobileinit", function(){
+            $.mobile.loadingMessageTextVisible = true;
+        });
+        </script>
+    <script src="jquery-mobile/jquery.mobile.js"></script>
+    <script>
+            $(document).on("click", ".show-page-loading-msg", function() {
+                var $this = $( this ),
+                    theme = $this.jqmData("theme") || $.mobile.loadingMessageTheme,
+                    msgText = $this.jqmData("msgtext") || $.mobile.loadingMessage,
+                    textonly = !!$this.jqmData("textonly");
+                $.mobile.showPageLoadingMsg(theme, msgText, textonly);
+            })
+            .on("click", ".hide-page-loading-msg", function() {
+                $.mobile.hidePageLoadingMsg();
+            });
+	</script>
+    </head>
+    <body>
+    <div data-role="page" id="page" >
+      <div data-role="header" data-theme="a">
+        <h1>Login</h1>
+      </div>
+      <div data-role="content">
+        <input type="text" name="email_add" id="email_add" value="" placeholder="Email Address" readonly="readonly"/>
+        <input type="password" name="password" id="password" value="" placeholder="Password"/>
+        <input type="text" name="phone_no" id="phone_no" value="" placeholder="Phone Number" readonly="readonly"/>
+       </div>
+    	<a href="javascript: login()" style="text-decoration:none">
+          <button class="show-page-loading-msg ui-btn-hidden" >Login</button>
+        </a>
+    	<a href="javascript: resetIt()" style="text-decoration:none">
+          <button class="show-page-loading-msg ui-btn-hidden" >Reset</button>
+        </a>
+    </div>
+</body>
+</html>
