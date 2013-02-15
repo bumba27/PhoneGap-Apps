@@ -24,7 +24,7 @@ function update(){
 	
 		// Selecting Data from the database "Person_data"
 		function populateDB(tx) {
-			//alert("populateDB");
+			alert("populateDB");
 			tx.executeSql('CREATE TABLE IF NOT EXISTS user_inf (email_add, password, comp_id, user_salutation, user_first_name, user_last_name, login_status)');
 	
 			var status       = "1";
@@ -42,7 +42,7 @@ function update(){
 			}
 	
 		function queryDB(tx) {
-			//alert("queryDB");
+			alert("queryDB");
 			tx.executeSql('SELECT * FROM user_inf', [], querySuccess, errorCB);
 		}
 	
