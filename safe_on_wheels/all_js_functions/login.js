@@ -53,6 +53,7 @@ if(email_add == email_add1 && password == password1 && phone_no == phone_no1)
 				else
 				{
 					alert("Please check your login info.");
+					$.mobile.hidePageLoadingMsg();
 				}
 			});
 		}
