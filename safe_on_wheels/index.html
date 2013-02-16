@@ -7,15 +7,7 @@
 <script src="all_js_functions/check_user_existence.js"></script>
 <script type="text/javascript" charset="utf-8" src="all_js_functions/setting.js"></script>
 <script type="text/javascript" charset="utf-8" src="all_js_functions/logout.js"></script>
-<link rel="stylesheet" href="jquery-mobile/jquery.mobile.css">
-<link rel="stylesheet" href="jquery-mobile/jqm-docs.css">
-<script src="jquery-mobile/jquery.js"></script>
-<script>
-	$(document).bind("mobileinit", function(){
-		$.mobile.loadingMessageTextVisible = true;
-	});
-</script>
-<script src="jquery-mobile/jquery.mobile.js"></script>
+<script type="text/javascript" charset="utf-8" src="all_js_functions/base64encode.js"></script>
 
 <script language="javascript" type="application/javascript">
 function goTo()
@@ -35,19 +27,7 @@ function goTo()
 		else
 		{
 			//window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_wheels_app_from_server/main_menu.html';
-			var urlName = "http://safeonwheels.crewsinfotech.com/api/user_master_login_checking.php";
-			$.post(urlName,{email_add:email_add1,password:password1},function(data) {
-				//var resultFromServer = data;
-				alert(data);
-				/*if(resultFromServer == "1")
-				{
-				window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_wheels_app_from_server/main_menu.html';
-				}
-				else
-				{
-					alert("Please check your login info.");
-				}*/
-			});
+			var urlName = "http://safeonwheels.crewsinfotech.com/api/user_master_login_checking.php?email_add="+email_add+"&password="+Base64.encode(password);
 		}
 	}
 }
@@ -72,6 +52,27 @@ function checkButton(){
  	}
 }
 
+</script>
+<link rel="stylesheet" href="jquery-mobile/jquery.mobile.css">
+<link rel="stylesheet" href="jquery-mobile/jqm-docs.css">
+<script src="jquery-mobile/jquery.js"></script>
+<script>
+    $(document).bind("mobileinit", function(){
+        $.mobile.loadingMessageTextVisible = true;
+    });
+    </script>
+<script src="jquery-mobile/jquery.mobile.js"></script>
+<script>
+        $(document).on("click", ".show-page-loading-msg", function() {
+            var $this = $( this ),
+                theme = $this.jqmData("theme") || $.mobile.loadingMessageTheme,
+                msgText = $this.jqmData("msgtext") || $.mobile.loadingMessage,
+                textonly = !!$this.jqmData("textonly");
+            $.mobile.showPageLoadingMsg(theme, msgText, textonly);
+        })
+        .on("click", ".hide-page-loading-msg", function() {
+            $.mobile.hidePageLoadingMsg();
+        });
 </script>
 
 </head> 
