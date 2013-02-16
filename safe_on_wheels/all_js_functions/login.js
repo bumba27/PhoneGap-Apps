@@ -44,7 +44,7 @@ if(email_add == email_add1 && password == password1 && phone_no == phone_no1)
 			//window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_wheels_app_from_server/main_menu.html';
 			var urlName = "http://safeonwheels.crewsinfotech.com/api/user_master_login_checking.php";
 			$.post(urlName,{email_add:email_add1,password:password1},function(data) {
-				alert(data);
+				
 			});
 		}
         db.transaction(queryDB, errorCB);
