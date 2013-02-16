@@ -48,7 +48,7 @@ if(email_add == email_add1 && password == password1 && phone_no == phone_no1)
 				//alert(resultFromServer);
 				if(resultFromServer == "1")
 				{
-				window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_wheels_app_from_server/main_menu.php?u_id='+resultFromServer+'phone_no='+phone_no1;
+				window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_wheels_app_from_server/main_menu.php?u_id='+resultFromServer+'&phone_no='+phone_no1;
 				}
 				else
 				{
