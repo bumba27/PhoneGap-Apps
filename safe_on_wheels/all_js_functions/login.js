@@ -46,7 +46,7 @@ if(email_add == email_add1 && password == password1 && phone_no == phone_no1)
 			$.post(urlName,{eml:email_add1,pas:password1},function(data) {
 				var usr = data;
 				//alert(resultFromServer);
-				if(resultFromServer == "1")
+				if(usr == "1")
 				{
 				window.location = 'http://crewsinfotech.com/safeonwheels/api/main/main_menu.php?u_id='+usr+'&phone_no='+phone_no1;
 				}
