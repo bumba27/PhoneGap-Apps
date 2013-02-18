@@ -14,4 +14,11 @@ Safe On Wheels
 Anirban
 </author>
 
+<icon src="icon.png" gap:role="default" />
+<preference name="prerendered-icon" value="true" />
+<preference name="load-url-timeout" value="180000" />
+<icon src="icon.png" default="true" />
+
+<gap:splash src="newloading.jpg"/>
+
 </widget>
