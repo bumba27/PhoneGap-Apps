@@ -43,7 +43,7 @@ if(email_add == email_add1 && password == password1 && phone_no == phone_no1)
 		{
 			//window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_wheels_app_from_server/main_menu.html';
 			var urlName = "http://safeonwheels.crewsinfotech.com/api/owner/login.php";
-			$.post(urlName,{email_add:email_add1,password:password1},function(data) {
+			$.post(urlName,{eml:email_add1,pas:password1},function(data) {
 				var usr = data;
 				//alert(resultFromServer);
 				if(resultFromServer == "1")

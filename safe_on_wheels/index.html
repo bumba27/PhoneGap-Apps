@@ -27,9 +27,9 @@ function goTo()
 		else
 		{
 			var urlName = "http://safeonwheels.crewsinfotech.com/api/owner/login.php";
-			$.post(urlName,{email_add:email_add,password:password},function(data) {
+			$.post(urlName,{eml:email_add,pas:password},function(data) {
 				var usr = data;
-				//alert(resultFromServer);
+				alert(usr);
 				if(resultFromServer == "1")
 				{
 				window.location = 'http://crewsinfotech.com/safeonwheels/api/main/main_menu.php?u_id='+usr+'&phone_no='+phone_no;
