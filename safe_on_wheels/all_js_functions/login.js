@@ -49,7 +49,7 @@ if(email_add == email_add1 && password == password1 && phone_no == phone_no1)
 				if(usr == "1")
 				{
 				//window.location = 'http://crewsinfotech.com/safeonwheels/api/main/menu.php?usr='+usr+'&phone_no='+phone_no1;
-				window.location = 'http://crewsinfotech.com/safeonwheels/api/main/menu.php';
+				window.location = 'http://crewsinfotech.com/safeonwheels/api/owner/menu.php';
 				}
 				else
 				{
