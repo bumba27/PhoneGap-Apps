@@ -19,6 +19,6 @@ Anirban
 <preference name="load-url-timeout" value="180000" />
 <icon src="icon.png" default="true" />
 
-<gap:splash src="newloading.jpg"/>
+<gap:splash src="newloading.png"/>
 
 </widget>
