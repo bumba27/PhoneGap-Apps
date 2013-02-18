@@ -9,6 +9,7 @@
 <script type="text/javascript" charset="utf-8" src="all_js_functions/logout.js"></script>
 
 <script language="javascript" type="application/javascript">
+location.reload();
 function goTo()
 {
 	if(user == 0)
@@ -31,7 +32,7 @@ function goTo()
 				//alert(resultFromServer);
 				if(resultFromServer == "1")
 				{
-				window.location = 'http://crewsinfotech.com/safeonwheels/api/safe_on_wheels_app_from_server/main_menu.php?u_id='+resultFromServer+'&phone_no='+phone_no;
+				window.location = 'http://crewsinfotech.com/safeonwheels/api/main/main_menu.php?u_id='+resultFromServer+'&phone_no='+phone_no;
 				}
 				else
 				{
